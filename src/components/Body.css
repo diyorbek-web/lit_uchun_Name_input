@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.page {
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  background-color: white;
+  flex-direction: column; /* Yozuvlarni ustma-ust qilish */
+  align-items: center; /* O'rtaga joylashtirish */
+  justify-content: center; /* O'rtaga joylashtirish */
+}
