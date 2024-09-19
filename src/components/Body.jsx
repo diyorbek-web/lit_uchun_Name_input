@@ -1,4 +1,3 @@
-import axios from "axios";
 import SendMessage from "./SendMessage";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -11,7 +10,6 @@ function Body({ setStep, step }) {
     phoneNumber: "",
   });
   const [message, setMessage] = useState("");
-  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,7 +41,9 @@ function Body({ setStep, step }) {
       setMessage("Xatolik yuz berdi. Iltimos, qayta urinib ko'ring.");
     }
   };
-
+  const previus = () => {
+    setStep(step - 1);
+  };
   const nextStep = () => {
     if (step === 1 && formData.firstName.trim() === "") {
       return;
@@ -101,14 +101,14 @@ function Body({ setStep, step }) {
                     placeholder="Ismingizni kiriting"
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="pb-16 border-2 border-black w-full h-24 max-w-xs"
+                    className="pb-16 pl-5 border-2 border-black w-full h-24 max-w-xs"
                   />
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 flex justify-center mb-7">
                   <button
                     type="button"
-                    className="btn w-full text-white bg-[#018FED] max-w-[280px]"
+                    className="btn p-3 rounded-3xl w-full text-white bg-[#018FED] max-w-[280px]"
                     onClick={nextStep}
                   >
                     Continue
@@ -128,14 +128,21 @@ function Body({ setStep, step }) {
                     placeholder="Telefon raqamingiz"
                     value={formData.phoneNumber}
                     onChange={handleChange}
-                    className="border-2 border-black w-full h-24 max-w-xs pb-16"
+                    className="border-2 pl-5 border-black w-full h-24 max-w-xs pb-16"
                   />
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 flex justify-center mb-7">
+                <div className="absolute bottom-0 left-0 right-0 flex flex-col justify-center items-center mb-7 gap-4">
                   <button
                     type="button"
-                    className="btn w-full text-white bg-[#018FED] max-w-[280px]"
+                    className="btn font-bold border-2 rounded-3xl w-full p-3 text-[#018FED] max-w-[280px]"
+                    onClick={previus}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    className="btn rounded-3xl p-3 w-full text-white bg-[#018FED] max-w-[280px]"
                     onClick={nextStep}
                   >
                     Continue
@@ -151,10 +158,17 @@ function Body({ setStep, step }) {
                   <p>Telefon: {formData.phoneNumber}</p>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 flex justify-center mb-7">
+                <div className="absolute bottom-0 left-0 right-0 flex flex-col justify-center items-center mb-7 gap-4">
                   <button
                     type="button"
-                    className="btn w-full text-white bg-[#018FED] max-w-[280px]"
+                    className="btn font-bold border-2 rounded-3xl w-full p-3 text-[#018FED] max-w-[280px]"
+                    onClick={previus}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    className="btn rounded-3xl w-full p-3 text-white bg-[#018FED] max-w-[280px]"
                     onClick={nextStep}
                   >
                     Submit
@@ -163,14 +177,27 @@ function Body({ setStep, step }) {
               </div>
             )}
             {step === 4 && (
-              <div className="flex flex-col items-center justify-center flex-grow">
-                <FaCheckCircle className="text-green-500 text-6xl mb-4" />
-                <p className="text-center text-lg font-bold mb-4">
-                  Tabriklaymiz! Sizning ma'lumotlaringiz jo'natildi.
-                </p>
-                <p className="text-center text-lg">
-                  Tez orada mutaxassislarimiz bog'lanishadi.
-                </p>
+              <div>
+                <div className="flex flex-col items-center justify-center flex-grow">
+                  <FaCheckCircle className="text-green-500 text-6xl mb-4" />
+                  <p className="text-center text-lg font-bold mb-4">
+                    Tabriklaymiz! Sizning ma'lumotlaringiz jo'natildi.
+                  </p>
+                  <p className="text-center text-lg">
+                    Tez orada mutaxassislarimiz bog'lanishadi.
+                  </p>
+                </div>
+
+                <div className="absolute bottom-0 left-0 right-0 flex justify-center mb-7">
+                  <a href="https://mehrigiyo.uz/uz/" className="btn-link">
+                    <button
+                      type="button"
+                      className="btn rounded-3xl w-full p-3 text-white bg-[#018FED] max-w-[300px]"
+                    >
+                      Ko'proq ma'lumot olish uchun
+                    </button>
+                  </a>
+                </div>
               </div>
             )}
           </form>
