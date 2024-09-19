@@ -105,7 +105,7 @@ function Body({ setStep, step }) {
                     placeholder="Ismingizni kiriting"
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="pb-16 pl-5 border-2 border-black w-full h-24 max-w-xs"
+                    className="pb-16 pl-5 border-2 border-black w-full h-24 max-w-xs focus:outline-none focus:ring-0 autofill:bg-white autofill:text-black"
                   />
                 </div>
 
@@ -132,7 +132,7 @@ function Body({ setStep, step }) {
                     placeholder="Telefon raqamingiz"
                     value={formData.phoneNumber}
                     onChange={handleChange}
-                    className="border-2 pl-5 border-black w-full h-24 max-w-xs pb-16"
+                    className="border-2 pl-5 border-black w-full h-24 max-w-xs pb-16 focus:outline-none focus:ring-0 autofill:bg-white autofill:text-black"
                   />
                 </div>
 
