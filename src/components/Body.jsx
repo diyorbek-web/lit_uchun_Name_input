@@ -10,6 +10,7 @@ function Body({ setStep, step }) {
     phoneNumber: "",
   });
   const [message, setMessage] = useState("");
+  const [stepDirection, setStepDirection] = useState("next");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,9 +43,11 @@ function Body({ setStep, step }) {
     }
   };
   const previus = () => {
+    setStepDirection("prev");
     setStep(step - 1);
   };
   const nextStep = () => {
+    setStepDirection("next");
     if (step === 1 && formData.firstName.trim() === "") {
       return;
     }
@@ -62,18 +65,18 @@ function Body({ setStep, step }) {
   };
 
   const variants = {
-    initial: {
-      x: "100%", // Sahifani o'ngdan chiqishi uchun
+    initial: (direction) => ({
+      x: direction === "next" ? "100%" : "-100%",
       opacity: 0,
-    },
+    }),
     enter: {
-      x: 0, // Sahifani o'ngdan kirishi uchun
+      x: 0,
       opacity: 1,
     },
-    exit: {
-      x: "-100%", // Sahifani chapga chiqishi uchun
+    exit: (direction) => ({
+      x: direction === "next" ? "-100%" : "100%",
       opacity: 0,
-    },
+    }),
   };
 
   return (
@@ -81,6 +84,7 @@ function Body({ setStep, step }) {
       <AnimatePresence>
         <motion.div
           key={step}
+          custom={stepDirection}
           variants={variants}
           initial="initial"
           animate="enter"
