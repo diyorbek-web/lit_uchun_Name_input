@@ -44,7 +44,7 @@ function Body({ setStep, step }) {
   };
   const previus = () => {
     setStepDirection("prev");
-    setStep(step - 1);
+    setStep((step = 1));
   };
   const nextStep = () => {
     setStepDirection("next");
@@ -95,17 +95,17 @@ function Body({ setStep, step }) {
           <form onSubmit={handleSubmit}>
             {step === 1 && (
               <div>
-                <p className="text-center font-bold">
+                <p className="text-center ml-[-130px] font-bold">
                   Ism familyangizni kiriting
                 </p>
-                <div className="flex justify-center items-start">
+                <div className="flex mt-2 justify-center items-start">
                   <input
                     type="text"
                     name="firstName"
                     placeholder="Ismingizni kiriting"
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="pb-16 pl-5 border-2 border-black w-full h-24 max-w-xs focus:outline-none focus:ring-0 autofill:bg-white autofill:text-black"
+                    className="rounded-xl pb-16 pl-5 border-2 border-black w-full h-24 max-w-xs focus:outline-none focus:ring-0 autofill:bg-white autofill:text-black"
                   />
                 </div>
 
@@ -122,28 +122,21 @@ function Body({ setStep, step }) {
             )}
             {step === 2 && (
               <div>
-                <p className="text-center font-bold">
+                <p className="text-center ml-[-100px] font-bold">
                   Telefon raqamingizni kiriting
                 </p>
-                <div className="flex justify-center items-start">
+                <div className="flex mt-2 justify-center items-start">
                   <input
                     type="tel"
                     name="phoneNumber"
                     placeholder="Telefon raqamingiz"
                     value={formData.phoneNumber}
                     onChange={handleChange}
-                    className="border-2 pl-5 border-black w-full h-24 max-w-xs pb-16 focus:outline-none focus:ring-0 autofill:bg-white autofill:text-black"
+                    className="border-2 rounded-xl pl-5 border-black w-full h-24 max-w-xs pb-16 focus:outline-none focus:ring-0 autofill:bg-white autofill:text-black"
                   />
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 flex flex-col justify-center items-center mb-7 gap-4">
-                  <button
-                    type="button"
-                    className="btn font-bold border-2 rounded-3xl w-full p-3 text-[#018FED] max-w-[280px]"
-                    onClick={previus}
-                  >
-                    Edit
-                  </button>
                   <button
                     type="button"
                     className="btn rounded-3xl p-3 w-full text-white bg-[#018FED] max-w-[280px]"
